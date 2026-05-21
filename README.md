@@ -2,8 +2,7 @@
 
 ## บริบทของโจทย์
 
-โปรเจกต์นี้เป็นการฝึกฝั่ง Frontend เท่านั้น  
-ผู้เรียนมีพื้นฐาน Backend อยู่แล้ว แต่ต้องการฝึกการออกแบบโครงสร้าง Frontend ให้เป็นระบบ โดยใช้แนวคิด Clean Architecture
+โปรเจกต์นี้เป็นการฝึกฝั่ง Frontend การฝึกการออกแบบโครงสร้าง Frontend ให้เป็นระบบ โดยใช้แนวคิด Clean Architecture
 
 สิ่งที่ต้องฝึกในโจทย์นี้คือ
 
@@ -20,7 +19,7 @@
 
 # โจทย์: Weather Dashboard
 
-ให้สร้างหน้าเว็บ Weather Dashboard สำหรับดูสภาพอากาศของเมืองที่เลือก โดยใช้ Next.js App Router และ Clean Architecture
+ให้สร้างหน้าเว็บ Weather Dashboard สำหรับดูสภาพอากาศของจังหวัดที่เลือก โดยใช้ Next.js App Router และ Clean Architecture
 
 หน้าเว็บต้องอยู่ที่ route
 

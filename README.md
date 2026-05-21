@@ -692,18 +692,19 @@ business
 
 ---
 
-## Bonus 7: Better Error Handling
+## Bonus 7: Better Error Handling & Resilience
 
-แยก error เป็นหลายกรณี
+ยกระดับการจัดการ Error ให้เป็นระบบและมีความเป็นมืออาชีพมากขึ้น ทั้งในแง่ของ Technical และ UX
 
-```txt
-- network error
-- API response error
-- city not found
-- invalid data shape
-```
+### รายละเอียดที่ต้องทำเพิ่ม:
 
-แล้วแสดงข้อความให้ผู้ใช้เข้าใจง่าย
+- **Custom Error Classes**: สร้าง Error Classes ของตัวเองใน Domain/Data Layer (เช่น `WeatherError`, `NetworkError`, `ValidationError`) เพื่อให้ Presenter แยกแยะและแสดง UI ได้ถูกต้อง
+- **Schema Validation (Zod)**: ใช้ Zod ใน Data Layer เพื่อ Validate ข้อมูลจาก API (DTO) ก่อนแปลงเป็น Entity เพื่อป้องกัน Runtime Error จากข้อมูลที่ผิดพลาด
+- **Retry Mechanism**: เพิ่มปุ่ม "Try Again" หรือกลไก Auto-Retry เมื่อเกิด Network Error
+- **User-Friendly Messaging**: แปลง Technical Errors เป็นข้อความภาษาไทยที่เข้าใจง่าย และแสดงผลผ่าน Alert หรือ Toast ของ DaisyUI
+- **Next.js Error Boundaries**: ใช้ไฟล์ `error.tsx` เพื่อดักจับ Error ระดับ Page และแสดง Fallback UI
+- **Offline Support**: ตรวจสอบสถานะ Internet และแจ้งเตือนผู้ใช้เมื่อการเชื่อมต่อขาดหาย
+- **Graceful Degradation**: หากดึงข้อมูลบางส่วนไม่ได้ (เช่น Forecast) ให้แสดงผลเท่าที่มีพร้อมแจ้งเตือนผู้ใช้ (Partial Success)
 
 ---
 
@@ -743,6 +744,18 @@ npm install recharts
 ```bash
 npm install -D vitest
 ```
+
+---
+
+# AI-Assisted Development (แนะนำ)
+
+หากคุณใช้ AI Agent ในการช่วยเขียนโค้ด (เช่น Cursor, Claude Dev, Gemini CLI) แนะนำให้แนบไฟล์คำแนะนำเหล่านี้เข้าไปใน Context เพื่อให้ AI เข้าใจกฎและโครงสร้างของโปรเจกต์อย่างถูกต้อง:
+
+- **`GEMINI.md`**: สำหรับ Gemini CLI / Google Gemini
+- **`CLAUDE.md`**: สำหรับ Claude / Claude Dev
+- **`AGENTS.md`**: สำหรับ AI Agents ทั่วไป (Cursor, Windsurf, etc.)
+
+ไฟล์เหล่านี้จะช่วยกำชับ AI ไม่ให้ละเมิดกฎ Clean Architecture เช่น ห้าม Fetch ใน View หรือห้ามใช้ DTO ข้าม Layer
 
 ---
 
